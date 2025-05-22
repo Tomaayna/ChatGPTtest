@@ -1,6 +1,12 @@
 (function () {
   "use strict";
 
+  function escapeQuotes(str) {
+    return String(str)
+      .replace(/\\/g, "\\\\")
+      .replace(/"/g, "\\\"");
+  }
+
   const EVENTS = ["app.record.create.submit", "app.record.edit.submit"];
 
   // フィールドコード → 表示ラベル
@@ -13,7 +19,7 @@
 
   kintone.events.on(EVENTS, async (event) => {
     const rec = event.record;
-    const esc = kintone.utils.escapeQuotes;          // " のエスケープ
+    const esc = escapeQuotes;          // " のエスケープ
     const conds = [];
 
     /* ▼ ① 取引先名は必須なので必ず条件に含める */
