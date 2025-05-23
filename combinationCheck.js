@@ -16,6 +16,7 @@
 
   kintone.events.on(EVENTS, async event => {
     const r = event.record;
+
     const conds = [];
 
     /* 1) 取引先名（必須） */
